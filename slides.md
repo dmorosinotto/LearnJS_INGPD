@@ -5,20 +5,20 @@ highlightTheme: "Monokai"
 
 <!-- .slide: data-background="images/INTRO.PNG" data-background-size="80%"-->
 # 
-##Javascript da 0 a ES6
+## Javascript da 0 a ES6
 Corso **FIP** del 08/6 e 06/7 2017 - 
 *Ing. Daniele Morosinotto*
 
 --
 
 <!-- .slide: data-background="images/XE.PNG" data-background-size="80%"-->
-##Chi sono
+## Chi sono
 
 ![Me](images/WHO.png)
 
 ---
 
-#Introduzione a Javascript
+# Introduzione a Javascript
 
 --
 
@@ -35,14 +35,14 @@ Corso **FIP** del 08/6 e 06/7 2017 -
 
 --
 
-##ECMA Technical Committee 39
+## ECMA Technical Committee 39
 [TC39 Members](https://github.com/hemanth/tc39-members/blob/master/members.json) - [Contribute guide](https://github.com/tc39/ecma262/blob/master/CONTRIBUTING.md)
 
 ![Approval Steps](images/Steps_TC39.jpeg)
 
 --
 
-##Perchè Javascript?
+## Perchè Javascript?
 
 > IMHO: Forse è uno dei pochi linguaggi veramente **portabile e universale** 
 
@@ -55,7 +55,7 @@ scritti in Javascript che ne sfruttano caratteristiche e potenzialità!
 
 --
 
-##Caratteristiche Linguaggio:
+## Caratteristiche Linguaggio:
 - E' un linguaggio di **scripting**, con sintassi derivata 
 da **Java/C** che ne rende facile l'adozione. <small>("purtroppo")</small>
 
@@ -70,7 +70,7 @@ Ma è possibile usare anche altri stili di prog. imperativa e OOP.
 
 ---
 
-#STATEMENTS
+# STATEMENTS
 
 ```javascript
 statement;      //comment single line
@@ -82,7 +82,7 @@ IL ; ALLA FINE DELLO STATEMENT E' OPZIONALE MA CONSIGLIATO!
 
 --
 
-##Blocchi Condizionali
+## Blocchi Condizionali
 ```javascript
 if (cond) {
 	//..then block
@@ -104,7 +104,7 @@ switch (expression) {
 
 --
 
-##Cicli
+## Cicli
 ```javascript
 while (expressionIsTrue) statement;
 
@@ -126,15 +126,15 @@ for (key in object) {
 
 --
 
-##Operatori
+## Operatori
 
 ![Operator Precedence](images/Operator_precedence.png)
-<br/><small>TRICK: [<code>js/samples/default_guard.js</code>](js/samples/default_guard.js)</small>
+<br/><small>TRICK: [<code>samples/js/default_guard.js</code>](samples/js/default_guard.js)</small>
 
 
 --
 
-##Exception
+## Exception
 ```javascript
 try {
   console.log( "before exception thrown" );
@@ -157,7 +157,7 @@ try {
 
 --
 
-##Definizioni varibili
+## Definizioni varibili
 ```javascript
 var globalVar1 = 100;    // Varibile Globale dichiarata normalmente
 
@@ -230,7 +230,7 @@ function howMany(a,b) {
 
 ---
 
-#I Tipi
+# I Tipi
 ![](images/JSTypes.gif)
 
 --
@@ -252,7 +252,7 @@ Sono due tipi che identificano l' **assenza di valore**
 
 --
 
-##Booleani
+## Booleani
 
 Possibili valori Literal: *- **true** - **false** *
 
@@ -285,11 +285,11 @@ var copyright = '\u00A9';
 ```
 - Propriet&agrave; s**.length**  =  numero di caratteri presenti nella stringa
 - Sono **IMMUTABLE** , volendo si puo' accedere in read-only ai singoli caratteri  *s[idx]* con *idx=0.. length-1* 
-[<code>js/samples/string.js</code>](js/samples/string.js)
+[<code>samples/js/string.js</code>](samples/js/string.js)
 
 --
 
-##Numeri
+## Numeri
 In Javascript esiste un solo tipo numerico:
 
  * **64-bit floating point** ([IEEE-754](http://bartaz.github.io/ieee754-visualization/))
@@ -300,7 +300,7 @@ In Javascript esiste un solo tipo numerico:
 	- *-Infinity*
 
 Alcuni "problemi" di rappresentazione 0.1+0.2 == 0.3 //[FALSE](https://speakerdeck.com/bartoszopka/everything-you-never-wanted-to-know-about-javascript-numbers)
-[<code>js/samples/number.js</code>](js/samples/number.js)
+[<code>samples/js/number.js</code>](samples/js/number.js)
 
 --
 
@@ -313,25 +313,25 @@ Si possono usare diverse notazioni per esprimere un numero:
 - Esadecimale	*0xFF*
 - Ottale *077*	
     (Attenzione: NON è disponibile in ES5 Strict Mode!)
-[<code>js/samples/number_literal.js</code>](js/samples/number_literal.js)
+[<code>samples/js/number_literal.js</code>](samples/js/number_literal.js)
 
 --
 
-####Primitive Type sono assegnati / passati per valore <small>(copiati)</small>
+#### Primitive Type sono assegnati / passati per valore <small>(copiati)</small>
 I valori originali non vengono modificati (copie **indipendenti**)!
 ![](images/NumByValue.gif)
-[<code>js/samples/value_ref.js</code>](js/samples/value_ref.js)
+[<code>samples/js/value_ref.js</code>](samples/js/value_ref.js)
 
 --
 
-####Tutti altri Object sono assegnati / passati per referenza <small>(puntatori)</small>
+#### Tutti altri Object sono assegnati / passati per referenza <small>(puntatori)</small>
 Ci sono **side-effect** quando modifichiamo i valori, anche nelle funzioni!
 ![](images/ObjByRef.gif)
-[<code>js/samples/value_ref.js</code>](js/samples/value_ref.js)
+[<code>samples/js/value_ref.js</code>](samples/js/value_ref.js)
 
 ---
 
-#Tutto il resto è Object
+# Tutto il resto è Object
 
 --
 
@@ -354,20 +354,20 @@ vengono anche detti *"array associativi" , "hash" , "map" o "dictionary"*
 
 --
 
-###Dynamic: Aggiungere/togliere membri
+### Dynamic: Aggiungere/togliere membri
 - GETTER: *var x =* **obj.prop**; oppure *var y =* **obj["prop"]**;
 	- NOTA: Se si accede ad una proprietà che non esistente ritorna *undefined*!
 - SETTER: **obj.prop** *=x;* oppure **obj["prop"]** *=y;* 
 	- NOTA: Se si inizializza una nuova proprietà (usando una chiave non presente) questa viene immediatamente aggiunta all'oggetto!
 - DELETE: Si può cancellare il valore di una proprietà settandogli *obj.prop =* **undefined**; o addiritura rimuoverla completamente dall'oggetto usando **delete obj["prop"];**
 - REFLECTION: è possibile elencare tutti i membri di un oggetto (anche quelli ereditati) con * **for** (k **in** obj) {... obj[k] ...} *
-[<code>js/samples/dynamic_reflection.js</code>](js/samples/dynamic_reflection.js)
+[<code>samples/js/dynamic_reflection.js</code>](samples/js/dynamic_reflection.js)
 
 Per testare l'esistenza di un membro si può usare * **if** ("prop" **in** obj) {...}* oppure * **if** (obj**.hasOwnProperty**("prop")) {* //se si vuole solo i diretti
 
 --
 
-##I Metodi
+## I Metodi
 Sono delle funzioni inserite come membro di un oggetto:
 ![](images/Method.gif)
 
@@ -396,7 +396,7 @@ Sono delle funzioni inserite come membro di un oggetto:
 > ATTENZIONE: Se richiamo direttamente la funzione, il **this** NON è assegnato!
 
 ![](images/ThisMethod_3.gif)
-[<code>js/samples/this_method.js</code>](js/samples/this_method.js)
+[<code>samples/js/this_method.js</code>](samples/js/this_method.js)
 
 Se sono in **"strict mode";** allora *this = undefined*, altrimenti *this* è l'oggetto *globale*!
 In ogni caso ho comportamenti errati ed errori!
@@ -418,14 +418,14 @@ var objEreditato = Object.create(objPrototipoBase);
 
 --
 
-####Prototype (1/3)
+#### Prototype (1/3)
 
 ![](images/Prototype_1.gif)
 Partiamo creando un semplice oggetto con un valore (*val*) e un metodo (*get*) definendo direttamente un *Object Literal*.
 
 --
 
-####Prototype (2/3)
+#### Prototype (2/3)
 
 ![](images/Prototype_2.gif)
 Definiamo un secondo oggetto (*child*) a partire dal primo usando **Object.create(...)**;
@@ -434,7 +434,7 @@ Andiamo inoltre ad inizializzare il valore dell'oggetto *child*.
 
 --
 
-####Prototype (3/3)
+#### Prototype (3/3)
 
 ![](images/Prototype_3.gif)
 
@@ -443,31 +443,31 @@ In questo modo abbiamo creato una catena di relazioni *"padre-figlio"* denominat
 
 --
 
-###Prototype-Chain (1/3)
+### Prototype-Chain (1/3)
 
 ![](images/PrototypeChain_1.gif)
 
 La *Prototype-Chain* viene utilizzata da Javascript per risolvere l'accesso ai membri dell'oggetto.
-[<code>js/samples/prototypechain.js</code>](js/samples/prototypechain.js)
+[<code>samples/js/prototypechain.js</code>](samples/js/prototypechain.js)
 
 --
 
-###Prototype-Chain (2/3)
+### Prototype-Chain (2/3)
 
 ![](images/PrototypeChain_2.gif)
 
 Se un membro non viene trovato all'inteno dell'oggetto, Javascript tenta di trovarlo negli oggetti padre risalendo la Prototype-Chain.
-[<code>js/samples/prototypechain.js</code>](js/samples/prototypechain.js)
+[<code>samples/js/prototypechain.js</code>](samples/js/prototypechain.js)
 
 --
 
-###Prototype-Chain (3/3)
+### Prototype-Chain (3/3)
 
 ![](images/PrototypeChain_3.gif)
 
 Il modello di ereditarietà prototipale è a volte chiamato **"Ereditarietà Differenziale"** perchè si basa sulla *"DELEGA"*. 
 Si costruisce un nuovo oggetto sulla base di un altro e poi si va a definire ciò che lo differenzia da quello di partenza!
-[<code>js/samples/prototypechain.js</code>](js/samples/prototypechain.js)
+[<code>samples/js/prototypechain.js</code>](samples/js/prototypechain.js)
 
 --
 
@@ -482,7 +482,7 @@ Si costruisce un nuovo oggetto sulla base di un altro e poi si va a definire ci�
 ## Extra: Reflection
 - "Reflection" ricavare infomazioni a run-time sugli Oggetti:
 	- Possiamo ricavare il prototype con *obj* **.\_\_proto\_\_** oppure in ES5 **Object.getPrototypeOf**( *obj* )
-	- Gli operatori **typeof** e **instanceof** ci permettono di ricavare informazioni runtime sul tipo [<code>js/samples/typeof_instanceof.js</code>](js/samples/typeof_instanceof.js)
+	- Gli operatori **typeof** e **instanceof** ci permettono di ricavare informazioni runtime sul tipo [<code>samples/js/typeof_instanceof.js</code>](samples/js/typeof_instanceof.js)
 - Possiamo ciclare tutti membri "visibili" di un oggetto con 
 ```javascript
 for(var k in obj) { ... obj[k] ...}	
@@ -492,11 +492,11 @@ for(var k in obj) { ... obj[k] ...}
 
 ---
 
-#FUNCTION
+# FUNCTION
 
 --
 
-##function FIRST-CLASS OBJECT
+## function FIRST-CLASS OBJECT
 - Sono Oggetti a tutti gli effetti	
 	- è possibile **agganciare dinamicamente proprietà** (o metodi) ad una funzione - ad esempio per creare delle costanti o metodi statici/factory di inizializzazione.
 	- Possono essere **assegnate ad una variabile**
@@ -556,7 +556,7 @@ fb(arg0,arg1,...);    //POI POSSO USARE DIRECT INVOCATION SENZA PROBLEMI
 //NEW INVOCATION
 new fnCtor(...); //this = nuovo oggetto, creato a partire da fnCtor.prototype
 ```
-[<code>js/samples/fn_callback.js</code>](js/samples/fn_callback.js)
+[<code>samples/js/fn_callback.js</code>](samples/js/fn_callback.js)
 
 ---
 
@@ -572,9 +572,9 @@ e [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Gl
 
 - Hanno un **prototype** che contiene una serie di *metodi* con funzioni di utilita'/conversione 
 legate al tipo, ad esempio: *.toString(); .toFixed(ndec); .toLocaleString(loc,opt); .substring(start,end); .concat([arg]); .charAt(idx); *
-- Il **wrapping** avviene in **automatico** quando si cerca di usare uno di questi metodi [<code>js/samples/wrapper.js</code>](js/samples/wrapper.js)
-- E' possibile estendere il prototype per aggiungere nuove funzionalità [<code>js/samples/monkey_patching.js</code>](js/samples/monkey_patching.js)
-- E' possibile usare il *Costruttore* dei wrapper per effettuare delle [<code>js/samples/convert.js</code>](js/samples/convert.js) esplicite di tipo
+- Il **wrapping** avviene in **automatico** quando si cerca di usare uno di questi metodi [<code>samples/js/wrapper.js</code>](samples/js/wrapper.js)
+- E' possibile estendere il prototype per aggiungere nuove funzionalità [<code>samples/js/monkey_patching.js</code>](samples/js/monkey_patching.js)
+- E' possibile usare il *Costruttore* dei wrapper per effettuare delle [<code>samples/js/convert.js</code>](samples/js/convert.js) esplicite di tipo
 - E' sconsigliato usare la sitassi *new Tipowrapper(val)* per creare oggetti è meglio **usare** direttamente la sintassi **Literal**!
 
 --
@@ -594,7 +594,7 @@ il *numero di millisecondi* dal **01 Gennaio 1970 00:00:00 UTC**
 
 #### Come utilizzare le Date:
 - Usiamo il costruttore per creare istanza **new Date(...);** //UTC
-- Possiamo manipolarle grazie ai metodi presenti Date.prototype [<code>js/samples/special.js</code>](js/samples/special.js)
+- Possiamo manipolarle grazie ai metodi presenti Date.prototype [<code>samples/js/special.js</code>](samples/js/special.js)
 - Però consiglio di usare librerie esterne [Moment.js](http://momentjs.com/) o [date-fns.js](https://date-fns.org)
 
 > ATTENZIONE: nelle funzioni *.getMonth(); .setMonth(**mm**);* e anche nel costruttore *new Date(year,**mm**,day,...)* il mese è sempre espresso nell'intervallo **0=Gennaio..11=Dicembre** 
@@ -603,11 +603,11 @@ il *numero di millisecondi* dal **01 Gennaio 1970 00:00:00 UTC**
 
 ## Array
 
-####Array Literal &nbsp; *var arr = [itm1, itm2, ...];*
+#### Array Literal &nbsp; *var arr = [itm1, itm2, ...];*
 - è un elenco di elementi *NON necessariamente* dello stesso tipo!
 - In verità è un Object che ha **keys *= "indice"* ** ossia i valori dell'indice in stringa da *"0" .. length-1*
 - Ha una proptietà read-only **.length *= massimo indice+1* **
-- E' dinamico (come tutti gli oggetti in JS) [<code>js/samples/array.js</code>](js/samples/array.js)
+- E' dinamico (come tutti gli oggetti in JS) [<code>samples/js/array.js</code>](samples/js/array.js)
 	- La **dimensione NON è fissata**: è possibile aggiungere o togliere elementi in ogni momento.
 	- E' possibile creare **array sparsi** assegnando direttamente elementi con *qualsiasi indice*!
 
@@ -624,10 +624,10 @@ il *numero di millisecondi* dal **01 Gennaio 1970 00:00:00 UTC**
 
 --
 
-##RegExp 
+## RegExp 
 *re = **/[regex_syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Using_special_characters)/gi** * Permette di definire un oggetto **RegExp** che può essere poi usato per verificare se una stringa rispetta un certo pattern *re.test(str)* o per farne poi il parse ed estrarre i vari match con *retArr = str.match(re)* oppure *retArr = re.exec(str)*
 
-##Math
+## Math
 E' un [contenitore](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) di **costanti** (es: *PI, E, LN2, LOG10E*) e di **metodi statici** delle principali operazioni matematiche e trigonometriche (es: *min(), max(), random(), abs(), sign(), round(), sqrt(), exp(), log10(), log(), sin(), cos(), atan()*, etc... )
 
 ---
@@ -641,7 +641,7 @@ E' un [contenitore](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 ### Prototype = behaviour
 
 Utilizziamo il **Prototype** per definire e riutilizzare i **metodi** (*behavior*) dell'oggetto
-separandoli dai **dati** (*stato dell'oggetto*). [<code>js/samples/protomodel_0.js</code>](js/samples/protomodel_0.js)
+separandoli dai **dati** (*stato dell'oggetto*). [<code>samples/js/protomodel_0.js</code>](samples/js/protomodel_0.js)
 
 ![PM_Behaviour.gif](images/PM_Behaviour_code.gif)
 
@@ -651,7 +651,7 @@ separandoli dai **dati** (*stato dell'oggetto*). [<code>js/samples/protomodel_0.
 Vediamo come fare **polimorfismo** in Javascript: ossia *ridefine*/specializzare *un metodo* in un oggetto ereditato.
 
 ![](images/PM_Polimorfism_code.gif)
-[<code>js/samples/protomodel_1.js</code>](js/samples/protomodel_1.js)
+[<code>samples/js/protomodel_1.js</code>](samples/js/protomodel_1.js)
 
 --
 
@@ -660,7 +660,7 @@ Vediamo come fare **polimorfismo** in Javascript: ossia *ridefine*/specializzare
 ![](images/PM_Polimorfism_dup.gif)
 Abbiamo un problema di *"riutilizzo del codice"*,
 
-vedremo come risolverlo... [<code>js/samples/protomodel_1.js</code>](js/samples/protomodel_1.js)
+vedremo come risolverlo... [<code>samples/js/protomodel_1.js</code>](samples/js/protomodel_1.js)
 
 --
 
@@ -669,7 +669,7 @@ vedremo come risolverlo... [<code>js/samples/protomodel_1.js</code>](js/samples/
 ![](images/PM_Polimorfism_ko.gif)
 Se cerchiamo di eseguire direttamente il metodo dell'oggetto base,
 abbiamo il problema del **this** che cambia e *perdiamo il contesto*!
-[<code>js/samples/protomodel_1.js</code>](js/samples/protomodel_1.js)
+[<code>samples/js/protomodel_1.js</code>](samples/js/protomodel_1.js)
 
 --
 
@@ -680,14 +680,14 @@ La soluzione è utilizzare l'**Invocazione Esplicita** delle funzioni, che ci pe
 altri argomenti.
 
 ![](images/PM_Polimorfism_OK.gif)
-[<code>js/samples/protomodel_1.js</code>](js/samples/protomodel_1.js)
+[<code>samples/js/protomodel_1.js</code>](samples/js/protomodel_1.js)
 
 --
 
 ### Creiamo qualche oggetto...
 Separando in modo netto i **dati** (*lo stato*) dai **metodi** (*behaviour*) e sfruttando i meccanismi nativi di Javascript 
 riusciamo a creare nuovi oggetti *"in modo differenziale"* riutilizzando il codice!
-[<code>js/samples/protomodel_2.js</code>](js/samples/protomodel_2.js)
+[<code>samples/js/protomodel_2.js</code>](samples/js/protomodel_2.js)
 ![PM_Inherit.gif](images/PM_Inherit_code.gif)
 
 --
@@ -709,14 +709,14 @@ Anche nella parte di "*inizializzazione*" dei dati (stato) abbiamo un problemino
 
 Possiamo risolverlo creando nel Prototype una funzione che utilizziamo per *inizializzare lo stato* dell'oggetto (il **Costruttore**)<br/>
 Sfruttiamo il contesto **this** (passato dalla *method invocation*) per *agganciare i dati dinamicamente* all'oggetto che stiamo creando.
-[<code>js/samples/protomodel_3.js</code>](js/samples/protomodel_3.js)
+[<code>samples/js/protomodel_3.js</code>](samples/js/protomodel_3.js)
 
 ![](images/PM_Constructor.gif)
 
 --
 
 ## Prototypal Model 
-Esempio completo con ereditarietà e polimorfismo [<code>js/samples/protomodel_4.js</code>](js/samples/protomodel_4.js)
+Esempio completo con ereditarietà e polimorfismo [<code>samples/js/protomodel_4.js</code>](samples/js/protomodel_4.js)
 
 ![](images/PM_Instance_OK.gif)
 Possimo utilizzare lo stesso costruttore anche per inizializzare le istanze ereditate, visto che è raggiungibile tramite la PrototypChain!
@@ -775,7 +775,7 @@ function new(func_Ctor, arguments) {
 ![](images/CM_Instance.gif)
 > Per convenzione il Costruttore inizia con una lettera Maiuscola!
 
-[<code>js/samples/classmodel_1.js</code>](js/samples/classmodel_1.js)
+[<code>samples/js/classmodel_1.js</code>](samples/js/classmodel_1.js)
 
 --
 
@@ -787,7 +787,7 @@ function new(func_Ctor, arguments) {
 <small>
 	- richiamare il *costruttore Padre*	all'interno del *costruttore Figlio*
 	  in modo da inizializzare correttamente lo stato dell'oggetto.
-	- oppure quando abbiamo bisogno di fare l'*Override* di un metodo, *riutilizzando* il codice del *Padre*. [<code>js/samples/classmodel_2.js</code>](js/samples/classmodel_2.js)
+	- oppure quando abbiamo bisogno di fare l'*Override* di un metodo, *riutilizzando* il codice del *Padre*. [<code>samples/js/classmodel_2.js</code>](samples/js/classmodel_2.js)
 </small> 
 
 ![](images/Classical_Inherits.gif)
@@ -799,7 +799,7 @@ function new(func_Ctor, arguments) {
 
 > La Prototype-Chain viene setta in modo da puntare Figlio.prototype -> Padre.prototype
 
-[<code>js/samples/classmodel_2.js</code>](js/samples/classmodel_2.js)
+[<code>samples/js/classmodel_2.js</code>](samples/js/classmodel_2.js)
 
 --
 
@@ -808,7 +808,7 @@ function new(func_Ctor, arguments) {
 
 ---
 
-#Tips & Tricks
+# Tips & Tricks
 
 --
 
@@ -859,7 +859,7 @@ function mixIn(target /*, ...mixins*/ ) {
 
 ### Esempi di utilizzo:  
 
-- Definizione dei parametri attuali di una funzione che accetta un *options map*, ma fa fallback su *defaults* [<code>js/samples/mixin.js</code>](js/samples/mixin.js)
+- Definizione dei parametri attuali di una funzione che accetta un *options map*, ma fa fallback su *defaults* [<code>samples/js/mixin.js</code>](samples/js/mixin.js)
 - Con una piccola modifica si può fare una funzione che copia i membri, ma **senza sovrascriverli** se sono già definiti!
 ```javascript
     ...
@@ -910,7 +910,7 @@ function makeCounter(init) {
   };
 }
 ```
-- Trucchetto [<code>var that=this;</code>](js/samples/that_this.js) per **catturare il contesto** di esecuzione per una successiva **callback asincrona**
+- Trucchetto [<code>var that=this;</code>](samples/js/that_this.js) per **catturare il contesto** di esecuzione per una successiva **callback asincrona**
 
 --
 
@@ -967,7 +967,7 @@ function startAsyncOperation( input_param , function cb(err,res) {
 } );
 ```
 
-- Però quando le operazioni asincrone da svolgere sono più di una (in sequenza o in parallelo), facilmente si incappa nel problema del [callback hell o pyramid of doom](js/samples/callback_hell.js)
+- Però quando le operazioni asincrone da svolgere sono più di una (in sequenza o in parallelo), facilmente si incappa nel problema del [callback hell o pyramid of doom](samples/js/callback_hell.js)
 - Per alleviare questo problema si può riccorre alle **Promise** (ndr *Future* o *.Thenable*) che permettono di scrivere del **codice** decisamente **più leggibile e lineare** semplificando anche la parte di gestione degli errori non solo HappyPath
 
 --
@@ -1004,7 +1004,7 @@ function startAsyncOperation( input_param , function cb(err,res) {
 
 --
 
-###ESEMPIO UTILIZZO delay/timeout:
+### ESEMPIO UTILIZZO delay/timeout:
 
 ```javascript
 function delay(ms) {
@@ -1033,16 +1033,16 @@ timeout(500, fakeWork() )
     .then( function(done){console.log("OK", done)} )
     .catch( function(err){console.error(err)} );
 ```
-[<code>js/samples/promise_timeout.js</code>](js/samples/promise_timeout.js)
+[<code>samples/js/promise_timeout.js</code>](samples/js/promise_timeout.js)
 
 
 ---
 
 ---
 
-#ES6
+# ES6
 a.k.a.
-##ECMAScript 2015
+## ECMAScript 2015
 
 - **ES6** = **[ECMA Script 2015](https://www.ecma-international.org/ecma-262/6.0/)** rilasciato in Giugno 2015 e d'ora in avanti ci saranno rilasci annuali con le features pronte (stage 4)
 - ES2016 ha definito [2 features](http://2ality.com/2016/01/ecmascript-2016.html): Array.includes e operatore esponenziale x**y === Math.pow(x,y);
@@ -1050,7 +1050,7 @@ a.k.a.
 
 --
 
-##Current Support @2015
+## Current Support @2015
 ![Support_AT_2015](images/2015_support_ops.png)
 [Current Support ;)](https://kangax.github.io/compat-table/es6/)
 
@@ -1069,13 +1069,13 @@ a.k.a.
 
 ---
 
-#NEW SYNTAX
+# NEW SYNTAX
 
 --
 
-##Shorthand object initializer
+## Shorthand object initializer
 
-<small>[<code>js/samples/shorthand_object_initializer.js</code>](js/samples/shorthand_object_initializer.js)</small>
+<small>[<code>samples/js/shorthand_object_initializer.js</code>](samples/js/shorthand_object_initializer.js)</small>
 ```javascript
 var first = 'Jane';
 var last = 'Doe';
@@ -1103,9 +1103,9 @@ console.log(obj.foo, obj["6"](), obj.myMethod(1,2));
 
 --
 
-##Block Scope: let const
+## Block Scope: let const
 
-<small>[<code>js/samples/block_scope_let_const.js</code>](js/samples/block_scope_let_const.js)</small>
+<small>[<code>samples/js/block_scope_let_const.js</code>](samples/js/block_scope_let_const.js)</small>
 ```javascript
 function f(b) {
     //console.log(x); //ERRORE TDZ let/const non subisce Hoisting
@@ -1136,9 +1136,9 @@ f(false);
 
 --
 
-##String Template ` = ALT+96
+## String Template ` = ALT+96
 
-<small>[<code>js/samples/template_string.js</code>](js/samples/template_string.js)</small>
+<small>[<code>samples/js/template_string.js</code>](samples/js/template_string.js)</small>
 ```javascript
 // Multiline strings
 console.log(`Con le stringhe "normali" questo
@@ -1171,9 +1171,9 @@ function classe(strTokens, ...vals) {
 
 --
 
-##Destructuring assignment
+## Destructuring assignment
 
-<small>[<code>js/samples/destructuring_assignment.js</code>](js/samples/destructuring_assignment.js)</small>
+<small>[<code>samples/js/destructuring_assignment.js</code>](samples/js/destructuring_assignment.js)</small>
 ```javascript
 // list matching 	//POSIZIONALE ORDINE IMPORTANTE!
 var [a,,b] = [1,2,3];
@@ -1205,9 +1205,9 @@ console.log(day,month);
 
 --
 
-##Default parameter
+## Default parameter
 
-<small>[<code>js/samples/default_parameter.js</code>](js/samples/default_parameter.js)</small>
+<small>[<code>samples/js/default_parameter.js</code>](samples/js/default_parameter.js)</small>
 ```javascript
 //default parameter
 function f(x=0,y=0) {  
@@ -1247,9 +1247,9 @@ d({color: [255,,255], z: 80 });			//100 #ff2ff
 
 --
 
-##Rest parameter + ...Spread
+## Rest parameter + ...Spread
 
-<small>[<code>js/samples/rest_spread.js</code>](js/samples/rest_spread.js)</small>
+<small>[<code>samples/js/rest_spread.js</code>](samples/js/rest_spread.js)</small>
 ```javascript
 //rest parameter
 function sum(first = 0,...nums) {
@@ -1274,13 +1274,13 @@ console.log(letters);		//'c','i','a','o'
 
 ---
 
-#CODE PATTERN
+# CODE PATTERN
 
 --
 
-##Arrow function =>
+## Arrow function =>
 
-<small>[<code>js/samples/arrow_function.js</code>](js/samples/arrow_function.js)</small>
+<small>[<code>samples/js/arrow_function.js</code>](samples/js/arrow_function.js)</small>
 ```javascript
 //arrow function => //E' LO STESSO DI function(..){return ...}
 const square = x => x * x;		
@@ -1314,9 +1314,9 @@ obj.printFriends();		//Pippo amico pluto, Pippo amico paperino
 
 --
 
-##Class
+## Class
 
-<small>[<code>js/samples/class_extend_super.js</code>](js/samples/class_extend_super.js)</small>
+<small>[<code>samples/js/class_extend_super.js</code>](samples/js/class_extend_super.js)</small>
 ```javascript
 class Polygon {
 	constructor(height, width) { //class constructor
@@ -1371,20 +1371,20 @@ s.print();
 
 --
 
-###Class is only [Syntactic Sugar](http://dmorosinotto.github.io/XEJS/#/6)
+### Class is only [Syntactic Sugar](http://dmorosinotto.github.io/XEJS/#/6)
 
 ![Recap](images/ES6_vs_Classicall.gif)
 
 --
 
-##Module System
+## Module System
 
 - Standardizzazione della sintassi per gestire il codice JS in più file - ndr: **moduli** e le relative dipendenze (import, export).
 - Permette di uniformare i pattern attualmente in uso (AMD, CommonJS) tramite implementazioni del Loader - ndr: **System** che ha comportamento di default: caricamento **asincrono**!
 
 --
 
-###export
+### export
 ```javascript
 // mylib/math.js
 //EXPORT MULTIPLI DA UN MODULO
@@ -1400,7 +1400,7 @@ export var sqrt = Math.sqrt;
 
 --
 
-###import *
+### import *
 ```javascript
 // app1.js
 import * as math from "./mylib/math.js";
@@ -1411,7 +1411,7 @@ alert("2π = " + math.sum(math.pi, math.pi));    //6.283186
 [<code>js/index_systemjs.html</code>](js/index_systemjs.html)
 
 
-###import explicit + rename
+### import explicit + rename
 ```javascript
 // app2.js
 import { pi, sqrt as radice } from "./mylib/math";
@@ -1423,7 +1423,7 @@ alert("V²π = " + radice(pi));                    //1.7724539
 
 --
 
-###export default</small>
+### export default</small>
 ```javascript
 // mylib/mathplus.js
 export default function(x) {
@@ -1431,7 +1431,7 @@ export default function(x) {
 }
 ```
 
-###export * + import default</small>
+### export * + import default</small>
 ```javascript
 // mylib/mathplusplus.js
 export * from "lib/math";
@@ -1440,7 +1440,7 @@ export const e = _exp(1);
 export var exp = _exp;
 ```
 
-###import dependency tree
+### import dependency tree
 ```javascript
 // app3.js
 import {exp, pi} from "./mylib/mathplusplus";
@@ -1460,7 +1460,7 @@ alert("e^π = " + exp(pi));                     //23.1407006
 
 ---
 
-#ALTRE FEATURES
+# ALTRE FEATURES
 
 --
 
@@ -1552,11 +1552,11 @@ function httpGET(url) { //FUNZIONE HELPER CHE FA CHIAMATA HTTP
 
 --
 
-##Other Special Objects
+## Other Special Objects
 
 - **Map** : Sono dei veri **dictionary** che gestiscono chiavi "key" di qualunque tipo primitivo, oggetti o funzioni (*reference*)
 - **Set** : E' una **collezione** di elementi **univoci** (controllo esistenza con === uguaglianza per *reference*)
-[<code>js/samples/set_map.js</code>](js/samples/set_map.js)
+[<code>samples/js/set_map.js</code>](samples/js/set_map.js)
 
 ```javascript
 let obj = {};
@@ -1574,7 +1574,7 @@ let unique = [...new Set(arr)]; // [ 5, 1, 7 ]
 
 --
 
-- **WeakMap + WeakSet** : Sono come Map e Set solo che hanno la proprietà di **NON mantenere un riferimento** vivo all'oggetto usato come chiave, e quindi NON ci sono problemi di Garbage collection/Memory leak [<code>js/samples/weakmap_real_private.js</code>](js/samples/weakmap_real_private.js)
+- **WeakMap + WeakSet** : Sono come Map e Set solo che hanno la proprietà di **NON mantenere un riferimento** vivo all'oggetto usato come chiave, e quindi NON ci sono problemi di Garbage collection/Memory leak [<code>samples/js/weakmap_real_private.js</code>](samples/js/weakmap_real_private.js)
 
 ```javascript
 (function(global) {
@@ -1605,7 +1605,7 @@ d.doStuff();
 
 --
 
-##New functions
+## New functions
 
 - **Object.assign**(...objs)	utilissimo per fare MIXIN
 - **Number.isNaN**( n ) 		finalmente un modo per controllare NaN
@@ -1627,4 +1627,4 @@ console.log(
 
 ---
 
-#TODO: 8 Domande!
+# TODO: 8 Domande!

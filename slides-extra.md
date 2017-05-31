@@ -3,11 +3,11 @@ theme : "white"
 highlightTheme: "Monokai"
 ---
 
-#EXTRA: ITERATORS & GENERATORS
+# EXTRA: ITERATORS & GENERATORS
 
 --
 
-###Symbol
+### Symbol
 
 - Sono una nuova primitiva di Javascript che permette di avere un valore univoco!
 ```javascript
@@ -16,7 +16,7 @@ var _secretKey = new Symbol("secret"); 	//name is optional
 - Può essere usata in qualsiasi oggetto come "key" (nome di una proprietà) al posto delle stringhe
 - Ci sono alcune costanti usate internamente da JS: **Symbol.iterator**
 
-###Iterables
+### Iterables
 
 - Sono oggetti che espongono un metodo di nome **Symbol.iterator** e che ritorna un oggetto Iterator
 ```typescript
@@ -65,15 +65,15 @@ for(let n of fibonacci) { //Consumo l'interfaccia ITERABLE con FOR OF!
     if (n>1000) break; //Ferma la sequenza altrimenti sarebbe INFINITA!
 }
 ```
-[<code>js/samples/iterable_range_fibonacci.js</code>](js/samples/iterable_range_fibonacci.js)
+[<code>samples/js/iterable_range_fibonacci.js</code>](samples/js/iterable_range_fibonacci.js)
 
 --
 
-###for of
+### for of
 
 Gli Iterator possono essere usati direttamente, ma nella maggior parte dei casi l'interfaccia viene consumata usando il nuovo ciclo **for** *(let item* **of** *Iterable) {...}*  
 
-<small>[<code>js/samples/for_of.js</code>](js/samples/for_of.js)</small>
+<small>[<code>samples/js/for_of.js</code>](samples/js/for_of.js)</small>
 ```javascript
 let arr = ['foo', 'bar', 'baz']; //Gli Array (e le Stringhe) sono ITERABLE!
  
@@ -93,7 +93,7 @@ for(let curr=it.next(); !curr.done; curr = it.next() ) {
 
 --
 
-##Generators
+## Generators
 
 - Sono *"pausable function"* che utilizzano **yield** per semplificare l'implementazione di Iterators e molto altro... (ndr: observable & co-routine) 
 
@@ -123,15 +123,15 @@ for(let x of range(10)) {
     console.log("inside for", x);
 }
 ```
-<small>[<code>js/samples/generetor_range.js</code>](js/samples/generetor_range.js)</small>
+<small>[<code>samples/js/generetor_range.js</code>](samples/js/generetor_range.js)</small>
 
 ---
 
-#MODULE LOADER & BUNDLER
+# MODULE LOADER & BUNDLER
 
 --
 
-##ES6 "native module" in [SAFARI](js/samples/native_in_safari.html)
+## ES6 "native module" in [SAFARI](samples/js/native_in_safari.html)
 
 ```html
 <body>
@@ -147,7 +147,7 @@ per <a href="https://blog.hospodarets.com/native-ecmascript-modules-the-first-ov
 </scrpt>
 ```
 
-<small>[<code>js/samples/es6_greet.js</code>](js/samples/es6_greet.js)</small>
+<small>[<code>samples/js/es6_greet.js</code>](samples/js/es6_greet.js)</small>
 ```javascript
 export default function greet(after = 1000, ...who) {
 	if (typeof after !== "number") 
@@ -159,7 +159,7 @@ export default function greet(after = 1000, ...who) {
 }
 ```
 
-##[TypeScript](https://github.com/Microsoft/TypeScript/wiki/Roadmap#18) (1.8+) is ES6
+## [TypeScript](https://github.com/Microsoft/TypeScript/wiki/Roadmap#18) (1.8+) is ES6
 
 ```typescript
 //greet.ts è esattamente il codice ES6 + type annotation (che sono opzionali)
@@ -192,7 +192,7 @@ Nel file HTML si incluse semplicemente il file Javascript:
 
 --
 
-##Transpile e try new feature [Babel.io](https://babeljs.io)
+## Transpile e try new feature [Babel.io](https://babeljs.io)
 
 <iframe src="https://babeljs.io/repl" width="800" height="600"></iframe>
 
@@ -206,7 +206,7 @@ Nel file HTML si incluse semplicemente il file Javascript:
 
 --
 
-##Riferimenti:
+## Riferimenti:
 
 
 - [Articolo](https://github.com/lukehoban/es6features) riassuntivo su ES6 features + [EBook](https://leanpub.com/understandinges6/read/)
