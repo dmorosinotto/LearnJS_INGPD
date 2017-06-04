@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html lang="it">
+<head>
+	<meta charset="utf-8">
+
+	<title>SAMPLE ES6 + Webpack</title>
+
+	<meta name="author" content="Daniele Morosinotto">
+
+	<script src="bundle_webpack.js"></script>
+</head>
+<body>
+	<h2>SAMPLE ES6 + <a href="https://webpack.js.org/concepts/">Webpack</a></h2>
+	Compilato con:
+	<pre>
+		webpack js/app2.js bundle_webpack.js
+	</pre>
+	Ecquivale a: <b>webpack</b>
+<pre>
+// webpack.config.js
+const webpack = require('webpack'); //to access built-in plugins
+const path = require('path');
+
+const config = {
+  entry: {
+	  webpack: './js/app2.js' 
+  },
+  output: {
+    path: path.resolve(__dirname, '.'),
+    filename: 'bundle_[name].js'
+  },
+  module: {
+    rules: [
+      {test: /\.js$/, use: 'babel-loader'}
+    ]
+  },
+  resolve: {
+	modules: ["node_modules"],  
+	extensions: [".js"]
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin()
+  ],
+  target: "web"
+};
+
+module.exports = config;
+</pre>
+</body>
+</html>

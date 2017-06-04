@@ -1,0 +1,30 @@
+{
+  "name": "js_samples",
+  "version": "1.0.0",
+  "private": true,
+  "description": "JS Samples",
+  "main": "index.js",
+  "scripts": {
+    "server": "http-server -c-1 --cors -o",
+    "systemjs": "tsc js/app.ts --module system --target es5 --allowJs --outFile bundle_system.js",
+    "postsystemjs": "npm run server -- index_systemjs.html",
+    "webpack": "webpack js/app2.js bundle_webpack.js",
+    "postwebpack": "npm run server -- index_webpack.html",
+    "rollup": "rollup js/app3.js --format iife --output bundle_rollup.js",
+    "postrollup": "npm run server -- index_rollup.html"
+  },
+  "dependencies": {
+    "jquery": "3.2.1",
+    "requirejs": "2.3.3",
+    "systemjs": "0.20.13"
+  },
+  "peerDependencies": {
+    "typescript": "2.3.4",
+    "webpack": "2.6.1",
+    "rollup": "0.42.0",
+    "http-server": "0.10.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

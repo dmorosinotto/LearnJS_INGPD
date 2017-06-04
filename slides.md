@@ -129,8 +129,6 @@ for (key in object) {
 ## Operatori
 
 ![Operator Precedence](images/Operator_precedence.png)
-<br/><small>TRICK: [<code>samples/js/default_guard.js</code>](samples/js/default_guard.js)</small>
-
 
 --
 
@@ -159,7 +157,7 @@ try {
 
 ## Definizioni varibili
 ```javascript
-var globalVar1 = 100;    // Varibile Globale dichiarata normalmente
+var globalVar1 = 100;    // Variabile Globale dichiarata normalmente
 
 window.globalVar2 = 200; // Variabile Globale assegnazione esplicita!
 
@@ -182,6 +180,7 @@ console.log( globalVar1 ); //100
 console.log( globalVar2 ); //200
 console.log( globalVar3 ); //300 fuori dalle FUNC -> Global Pollution!
 ```
+[<code>samples/js/var_scope.js</code>](samples/js/var_scope.js)
 
 --
 
@@ -245,7 +244,7 @@ function howMany(a,b) {
 Sono due tipi che identificano l' **assenza di valore**
 
 - **null**: viene tipicamente utilizzato quando si vuole settare una variabile ad un valore *"non previsto" o speciale*.
-- **undefined**
+- **undefined** è tipicamente usato da javascript:
 	- è il *valore di default* di qualsiasi *variabile NON inizializzata*.
 	- è il valore che *viene ritornato* quando si cerca di accedere ad una *proprietà/membro* di un oggetto che *NON esiste*!
 	- è il valore che un *parametro assume* quando *NON viene passato* ad una funzione.
@@ -307,13 +306,12 @@ Alcuni "problemi" di rappresentazione 0.1+0.2 == 0.3 //[FALSE](https://speakerde
 ## Number Literal
 Si possono usare diverse notazioni per esprimere un numero:
 
-- Interi *123 	oppure	-456*
-- Decimale *1.23*
-- Esponenziale	*-56.789e-4*
-- Esadecimale	*0xFF*
-- Ottale *077*	
+- Interi **123** 	oppure	**-456**
+- Decimale **1.23**
+- Esponenziale	**-56.789e-4**
+- Esadecimale	**0xFF**   *//=255*
+- Ottale **077**         *//=63*
     (Attenzione: NON è disponibile in ES5 Strict Mode!)
-[<code>samples/js/number_literal.js</code>](samples/js/number_literal.js)
 
 --
 
@@ -325,7 +323,7 @@ I valori originali non vengono modificati (copie **indipendenti**)!
 --
 
 #### Tutti altri Object sono assegnati / passati per referenza <small>(puntatori)</small>
-Ci sono **side-effect** quando modifichiamo i valori, anche nelle funzioni!
+Ci sono **side-effect** quando modifichiamo i valori, anche come parametri nelle funzioni!
 ![](images/ObjByRef.gif)
 [<code>samples/js/value_ref.js</code>](samples/js/value_ref.js)
 
@@ -336,7 +334,7 @@ Ci sono **side-effect** quando modifichiamo i valori, anche nelle funzioni!
 --
 
 ### Alcune caratteristiche degli Oggetti:
-- Sono essenzialmente **elenco di coppie key-value** ,
+- Sono essenzialmente un **elenco di coppie key-value** ,
 <small> 
 vengono anche detti *"array associativi" , "hash" , "map" o "dictionary"*
 	- **key**: è un identificatore **stringa** (CASE SENSITIVE, e può iniziare con alfanumerici _ $ oppure qualsiasi altra 'stringa' tra apici **''**
@@ -371,7 +369,7 @@ Per testare l'esistenza di un membro si può usare * **if** ("prop" **in** obj) 
 Sono delle funzioni inserite come membro di un oggetto:
 ![](images/Method.gif)
 
-- Possibile perche' le ***function*** in Javascript sono ***object***!
+- Possibile perchè le ***function*** in Javascript sono ***object***!
 - All'interno del metodo posso usare ***this*** per accedere agli altri membri dell'oggetto!
 
 --
@@ -385,7 +383,7 @@ Sono delle funzioni inserite come membro di un oggetto:
 --
 
 ####*this* - Methods Invocation (2/3)
-> this è il contesto di invocazione NON un oggetto specifico!
+> this è il contesto di invocazione **NON** un oggetto specifico!
 > Questo ci permette di riutilizzare la stessa funzione con oggetti diversi! 
 
 ![](images/ThisMethod_2.gif)
@@ -404,7 +402,7 @@ In ogni caso ho comportamenti errati ed errori!
 --
 
 ## Prototype
-- In Javascript un Oggetto può *ereditare* o meglio *estendere direttamente* un'altro Oggetto, questo grazie al **prototype**.
+- In Javascript un Oggetto può *ereditare* o meglio *estendere direttamente* un altro Oggetto, questo grazie al **prototype**.
 - E' possibile creare un oggetto con **Object.create(proto)**;
 
 ```javascript
@@ -413,7 +411,7 @@ var objEreditato = Object.create(objPrototipoBase);
 //in modo che objPrototipoBase sia il *prototype* di objEreditato!
 ```
 - Creando gli oggetti in questo modo viene esplicitamente inizializzata la **Prototype-Chain**.
-- Anche se creiamo l'oggeto in altri modi (ex: Literal **{ ... }**), implicitamente tutti gli oggetti ereditano da **Object**.
+- Anche se creiamo l'oggetto in altri modi (ex: Literal **{ ... }**), implicitamente tutti gli oggetti ereditano da **Object**.
 - E' possibile ricavare a run-time il prototype in ES5 grazie a **Object.getPrototypeOf**( *obj* ) <br/> oppure tramite *obj* **.\_\_proto\_\_**
 
 --
@@ -467,7 +465,6 @@ Se un membro non viene trovato all'inteno dell'oggetto, Javascript tenta di trov
 
 Il modello di ereditarietà prototipale è a volte chiamato **"Ereditarietà Differenziale"** perchè si basa sulla *"DELEGA"*. 
 Si costruisce un nuovo oggetto sulla base di un altro e poi si va a definire ciò che lo differenzia da quello di partenza!
-[<code>samples/js/prototypechain.js</code>](samples/js/prototypechain.js)
 
 --
 
@@ -487,7 +484,7 @@ Si costruisce un nuovo oggetto sulla base di un altro e poi si va a definire ci�
 ```javascript
 for(var k in obj) { ... obj[k] ...}	
 ```
-	- Attenzione perche' non è garantito l'ordine in cui li ritorna e in piu' risale la Prototype-Chain
+	- Attenzione perchè non è garantito l'ordine in cui li ritorna e in piu' risale la Prototype-Chain
 	- Per enumerarle solo quelle proprie dell'oggetto posso usere **Object.getOwnPropertyNames(obj)**
 
 ---
@@ -500,7 +497,7 @@ for(var k in obj) { ... obj[k] ...}
 - Sono Oggetti a tutti gli effetti	
 	- è possibile **agganciare dinamicamente proprietà** (o metodi) ad una funzione - ad esempio per creare delle costanti o metodi statici/factory di inizializzazione.
 	- Possono essere **assegnate ad una variabile**
-	- Possono essere **memorizzate in un oggetto**
+	- Possono essere **memorizzate in un oggetto** (=metodi)
 ```javascript
 var obj ={ method: myFunction, ... }
 ```	
@@ -570,7 +567,7 @@ In verita anche i Primitive Types possono essere trattati come **object** grazie
 [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 e [Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
 
-- Hanno un **prototype** che contiene una serie di *metodi* con funzioni di utilita'/conversione 
+- Hanno un **prototype** che contiene una serie di *metodi* con funzioni di utilità/conversione 
 legate al tipo, ad esempio: *.toString(); .toFixed(ndec); .toLocaleString(loc,opt); .substring(start,end); .concat([arg]); .charAt(idx); *
 - Il **wrapping** avviene in **automatico** quando si cerca di usare uno di questi metodi [<code>samples/js/wrapper.js</code>](samples/js/wrapper.js)
 - E' possibile estendere il prototype per aggiungere nuove funzionalità [<code>samples/js/monkey_patching.js</code>](samples/js/monkey_patching.js)
@@ -584,18 +581,18 @@ legate al tipo, ad esempio: *.toString(); .toFixed(ndec); .toLocaleString(loc,op
 Sono derivate da Java e internamente rappresentano **Unix Epoch**
 il *numero di millisecondi* dal **01 Gennaio 1970 00:00:00 UTC**
 
-è possibile ricare questo numero di millisecondi usando:
+è possibile ricavare questo numero di millisecondi usando i metodi statici:
 
-- var Nms = **Date.parse** *(str);*	//parsing di una stringa formato data
-- var Nms = **Date.now** *();*		//data-ora corrente
-- var Nms = **Date.UTC** *(year,**mm**,day,...);*	//data-ora specifica
+- var nms = **Date.parse** *(str);*	//parsing di una stringa formato data
+- var nms = **Date.now** *();*		//data-ora corrente in localtime
+- var nms = **Date.UTC** *(year,**mm**,day, hh,...);*	//data-ora specifica in UTC
 
 --
 
 #### Come utilizzare le Date:
-- Usiamo il costruttore per creare istanza **new Date(...);** //UTC
-- Possiamo manipolarle grazie ai metodi presenti Date.prototype [<code>samples/js/special.js</code>](samples/js/special.js)
-- Però consiglio di usare librerie esterne [Moment.js](http://momentjs.com/) o [date-fns.js](https://date-fns.org)
+- Usiamo il costruttore per creare istanza <br/>**var d=new Date( nms );** *//nms in UTC o altri formati stringa*
+- Possiamo manipolarle l'istanza (mutable) grazie ai metodi presenti Date.prototype *es: d.setDate(day); d.setDay(dow); d.setUTCHours(hh); d.getFullYear(); d.toISOString();* [<small>ISO8601</small>](https://it.wikipedia.org/wiki/ISO_8601)
+- Consiglio di usare librerie esterne [Moment.js](http://momentjs.com/) o [date-fns.js](https://date-fns.org)
 
 > ATTENZIONE: nelle funzioni *.getMonth(); .setMonth(**mm**);* e anche nel costruttore *new Date(year,**mm**,day,...)* il mese è sempre espresso nell'intervallo **0=Gennaio..11=Dicembre** 
 
@@ -604,7 +601,7 @@ il *numero di millisecondi* dal **01 Gennaio 1970 00:00:00 UTC**
 ## Array
 
 #### Array Literal &nbsp; *var arr = [itm1, itm2, ...];*
-- è un elenco di elementi *NON necessariamente* dello stesso tipo!
+- E' un elenco di elementi * **NON** necessariamente* **dello stesso tipo**!
 - In verità è un Object che ha **keys *= "indice"* ** ossia i valori dell'indice in stringa da *"0" .. length-1*
 - Ha una proptietà read-only **.length *= massimo indice+1* **
 - E' dinamico (come tutti gli oggetti in JS) [<code>samples/js/array.js</code>](samples/js/array.js)
@@ -773,7 +770,7 @@ function new(func_Ctor, arguments) {
 ### Istanziazione Classica
 
 ![](images/CM_Instance.gif)
-> Per convenzione il Costruttore inizia con una lettera Maiuscola!
+> Per convenzione il Costruttore inizia con la 1° lettera Maiuscola!
 
 [<code>samples/js/classmodel_1.js</code>](samples/js/classmodel_1.js)
 
@@ -815,6 +812,8 @@ function new(func_Ctor, arguments) {
 ### Default e Guard
 
 Sfruttando il fatto che gli operatori logici **||** e **&&** implementano la logica di *"short-circuit"* e ritornano il valore truthy o falsy che li ha determinati è possibile realizzare:
+
+[<code>samples/js/default_guard.js</code>](samples/js/default_guard.js)
 ```javascript
 /*
 TRICKS: sfrutto Short-circuit negli operatori booleani:
@@ -832,8 +831,7 @@ function show(obj) {
 show(); //DEFAULT + GUARD --> 5 non esegue f
 show( {a: 123} ); //GUARD --> 123 non esegue f
 show( {f: function() { console.log("I RUN!");} } ); //DEFAULT  --> 5 I RUN!
-
-``` 
+```
 
 --
 
@@ -873,7 +871,8 @@ function mixIn(target /*, ...mixins*/ ) {
 
 ### deepClone di un Oggetto
 
-Visto che gli oggetti sono sempre passati per referenza, se vogliamo avere una copia dell'oggetto su cui operare senza interagire sull'istanza iniziale dobbiamo farcela.
+Visto che gli oggetti sono sempre passati per referenza, se vogliamo avere una copia dell'oggetto su cui operare senza interagire sull'istanza iniziale dobbiamo farcela.[<code>clone.js</code>](samples/js/clone.js)
+
 ```javascript
 function deepClone(obj) {
     var ret;
@@ -952,6 +951,7 @@ function makeCounter(init) {
 ```
 
 Praticamente è una IIFE che si "auto-passa" il contesto esterno e il nome del modulo con cui esporsi e poi ritorna l'interfaccia pubblica: variabili e metodi che rende accessibili dall'esterno con *NOME_MOD.pub e NOME_MOD.pubFn()*
+[<code>samples/js/revealing.js</code>](samples/js/revealing.js)
 
 ---
 
@@ -976,7 +976,7 @@ function startAsyncOperation( input_param , function cb(err,res) {
 
 > Una Promise (ndr Future o Thenable): è una promessa di un valore futuro, ed incapsula al suo interno l'esito dell'operazione (**fullfilled**=RISULTATO / **rejected**=ERRORE)
 
-- Esistono diverse librerie che implementano le Promise: [JQuery.deffer](https://api.jquery.com/category/deferred-object/), [Q.js](https://github.com/kriskowal/q), [Bluebird](http://bluebirdjs.com/docs/getting-started.html) ed ora anche nello standard **ES6 Promise**! 
+- Esistono diverse librerie che implementano le Promise: [JQuery.deffer](https://api.jquery.com/category/deferred-object/), [Q.js](https://github.com/kriskowal/q), [Bluebird](http://bluebirdjs.com/docs/getting-started.html) ed ora anche nello standard **ES6 Promise** + eventuali [Polyfill](https://github.com/stefanpenner/es6-promise)! 
 
 - Tutte fanno capo ad una specifica [Promises/A+](https://github.com/promises-aplus/promises-spec) che definisce i comportamenti e un'interfaccia comune a cui i vari implementatori aderiscono per favorire compatibilità.
 
@@ -999,7 +999,7 @@ function startAsyncOperation( input_param , function cb(err,res) {
 
 ### Caratteristiche di una Promise (2/2)
 
-- *onFullfilled* e *onRejected* sono **opzionali** + le promise sono **concatenabili** + gesticono **un-wrap** delle promise interne.
+- *onFullfilled* e *onRejected* sono **opzionali** + le promise sono **concatenabili** + gesticono l'**un-wrap** delle promise interne.
 ![Promise .then](images/Promise_then.png) ![Promise .catch](images/Promise_then_catch.png) 
 
 --
@@ -1023,7 +1023,7 @@ function timeout(ms, workPromise) {
 }
 
 //SIMULAZIONE DI LAVORO CHE DURA TEMPO RANDOM 0-1000
-functionfakeWork(){
+function fakeWork(){
     return delay(Math.random()*1000)
             .then(function(){return "WORK DONE!"});
 }
@@ -1034,7 +1034,6 @@ timeout(500, fakeWork() )
     .catch( function(err){console.error(err)} );
 ```
 [<code>samples/js/promise_timeout.js</code>](samples/js/promise_timeout.js)
-
 
 ---
 
@@ -1052,7 +1051,7 @@ a.k.a.
 
 ## Current Support @2015
 ![Support_AT_2015](images/2015_support_ops.png)
-[Current Support ;)](https://kangax.github.io/compat-table/es6/)
+[REAL Current Support ;-)](https://kangax.github.io/compat-table/es6/)
 
 --
 
@@ -1075,7 +1074,7 @@ a.k.a.
 
 ## Shorthand object initializer
 
-<small>[<code>samples/js/shorthand_object_initializer.js</code>](samples/js/shorthand_object_initializer.js)</small>
+<small>[<code>samples/js/es6_shorthand.js</code>](samples/js/es6_shorthand.js)</small>
 ```javascript
 var first = 'Jane';
 var last = 'Doe';
@@ -1105,11 +1104,10 @@ console.log(obj.foo, obj["6"](), obj.myMethod(1,2));
 
 ## Block Scope: let const
 
-<small>[<code>samples/js/block_scope_let_const.js</code>](samples/js/block_scope_let_const.js)</small>
+<small>[<code>samples/js/es6_let_const.js</code>](samples/js/es6_let_const.js)</small>
 ```javascript
 function f(b) {
     //console.log(x); //ERRORE TDZ let/const non subisce Hoisting
-  
     if (b) { 
     //block scope let 
       let y = "e' truthy";
@@ -1117,15 +1115,11 @@ function f(b) {
     }
     //console.log(y); //ERRORE y OUT OF SCOPE
     
-    //block scope const = readonly
-    const x = 1;
-    
+    const x = 1; //block scope const = readonly
     if (!b) {
-        // OK block scope INTERNO posso ridefinire x
-        let x = 0;
+        let x = 0; // OK block scope INTERNO posso ridefinire x
         console.log(b,x);
     }
-    
     //x = 3; //ERRORE CONST x READONLY
     console.log(x);
 }
@@ -1138,7 +1132,7 @@ f(false);
 
 ## String Template ` = ALT+96
 
-<small>[<code>samples/js/template_string.js</code>](samples/js/template_string.js)</small>
+<small>[<code>samples/js/es6_template_string.js</code>](samples/js/es6_template_string.js)</small>
 ```javascript
 // Multiline strings
 console.log(`Con le stringhe "normali" questo
@@ -1173,7 +1167,7 @@ function classe(strTokens, ...vals) {
 
 ## Destructuring assignment
 
-<small>[<code>samples/js/destructuring_assignment.js</code>](samples/js/destructuring_assignment.js)</small>
+<small>[<code>samples/js/es6_destructuring_assignment.js</code>](samples/js/es6_destructuring_assignment.js)</small>
 ```javascript
 // list matching 	//POSIZIONALE ORDINE IMPORTANTE!
 var [a,,b] = [1,2,3];
@@ -1207,7 +1201,7 @@ console.log(day,month);
 
 ## Default parameter
 
-<small>[<code>samples/js/default_parameter.js</code>](samples/js/default_parameter.js)</small>
+<small>[<code>samples/js/es6_default_parameter.js</code>](samples/js/es6_default_parameter.js)</small>
 ```javascript
 //default parameter
 function f(x=0,y=0) {  
@@ -1249,7 +1243,7 @@ d({color: [255,,255], z: 80 });			//100 #ff2ff
 
 ## Rest parameter + ...Spread
 
-<small>[<code>samples/js/rest_spread.js</code>](samples/js/rest_spread.js)</small>
+<small>[<code>samples/js/es6_rest_spread.js</code>](samples/js/es6_rest_spread.js)</small>
 ```javascript
 //rest parameter
 function sum(first = 0,...nums) {
@@ -1280,7 +1274,7 @@ console.log(letters);		//'c','i','a','o'
 
 ## Arrow function =>
 
-<small>[<code>samples/js/arrow_function.js</code>](samples/js/arrow_function.js)</small>
+<small>[<code>samples/js/es6_arrow_function.js</code>](samples/js/es6_arrow_function.js)</small>
 ```javascript
 //arrow function => //E' LO STESSO DI function(..){return ...}
 const square = x => x * x;		
@@ -1316,7 +1310,7 @@ obj.printFriends();		//Pippo amico pluto, Pippo amico paperino
 
 ## Class
 
-<small>[<code>samples/js/class_extend_super.js</code>](samples/js/class_extend_super.js)</small>
+<small>[<code>samples/js/es6_class_extend_super.js</code>](samples/js/es6_class_extend_super.js)</small>
 ```javascript
 class Polygon {
 	constructor(height, width) { //class constructor
@@ -1371,7 +1365,7 @@ s.print();
 
 --
 
-### Class is only [Syntactic Sugar](http://dmorosinotto.github.io/XEJS/#/6)
+### Class is only [Syntactic Sugar](#/9/5)
 
 ![Recap](images/ES6_vs_Classicall.gif)
 
@@ -1397,6 +1391,18 @@ export const pi = 3.141593;
 //VARIABILI - RIFERIMENTI
 export var sqrt = Math.sqrt;
 ```
+<small>
+- [<code>samples/js/mylib/math.js</code>](samples/js/mylib/math.js)
+- [<code>samples/js/mylib/mathplus.js</code>](samples/js/mylib/math.js)
+- [<code>samples/js/mylib/mathplusplus.js</code>](samples/js/mylib/math.js)
+- [<code>samples/js/app1.js</code>](samples/js/app1.js)
+- [<code>samples/js/app1.js</code>](samples/js/app.ts)
+- [<code>samples/js/app2.js</code>](samples/js/app2.js)
+- [<code>samples/js/app3.js</code>](samples/js/app3.js)
+- [<code>samples/js/app.ts</code>](samples/js/app.ts)
+- [<code>samples/tsconfig.json</code>](samples/tsconfig.json)
+</small>
+
 
 --
 
@@ -1407,8 +1413,8 @@ import * as math from "./mylib/math.js";
 //IMPORT * REFERENZIA TUTTO CIO' CHE IL MODULO ESPORTA
 alert("2π = " + math.sum(math.pi, math.pi));    //6.283186
 ```
-[<code>js/index_native_safari.html</code>](js/index_native_safari.html)
-[<code>js/index_systemjs.html</code>](js/index_systemjs.html)
+[<code>samples/index_native_safari.html</code>](samples/index_native_safari.html)
+[<code>samples/index_systemjs.html</code>](samples/index_systemjs.html)
 
 
 ### import explicit + rename
@@ -1418,7 +1424,7 @@ import { pi, sqrt as radice } from "./mylib/math";
 //IMPORT EXPLICIT + EVENTUALE RENAME
 alert("V²π = " + radice(pi));                    //1.7724539
 ```
-[<code>js/index_webpack.html</code>](js/index_webpack.html)
+[<code>samples/index_webpack.html</code>](samples/index_webpack.html)
 
 
 --
@@ -1447,7 +1453,7 @@ import {exp, pi} from "./mylib/mathplusplus";
 //IMPORT PUNTUALE DI ALCUNE FUNZIONI + ATTRAVERSA DEPENENCY TREE (pi->mathplusplus->math)
 alert("e^π = " + exp(pi));                     //23.1407006
 ```
-[<code>js/index_rollup.html</code>](js/index_rollup.html)
+[<code>samples/index_rollup.html</code>](samples/index_rollup.html)
 
 --
 
@@ -1549,6 +1555,7 @@ function httpGET(url) { //FUNZIONE HELPER CHE FA CHIAMATA HTTP
   );
 }
 ```
+[<code>samples/js/es6_promise.js</code>](samples/js/es6_promise.js)
 
 --
 
@@ -1556,7 +1563,7 @@ function httpGET(url) { //FUNZIONE HELPER CHE FA CHIAMATA HTTP
 
 - **Map** : Sono dei veri **dictionary** che gestiscono chiavi "key" di qualunque tipo primitivo, oggetti o funzioni (*reference*)
 - **Set** : E' una **collezione** di elementi **univoci** (controllo esistenza con === uguaglianza per *reference*)
-[<code>samples/js/set_map.js</code>](samples/js/set_map.js)
+[<code>samples/js/es6_set_map.js</code>](samples/js/es6_set_map.js)
 
 ```javascript
 let obj = {};
@@ -1574,7 +1581,7 @@ let unique = [...new Set(arr)]; // [ 5, 1, 7 ]
 
 --
 
-- **WeakMap + WeakSet** : Sono come Map e Set solo che hanno la proprietà di **NON mantenere un riferimento** vivo all'oggetto usato come chiave, e quindi NON ci sono problemi di Garbage collection/Memory leak [<code>samples/js/weakmap_real_private.js</code>](samples/js/weakmap_real_private.js)
+- **WeakMap + WeakSet** : Sono come Map e Set solo che hanno la proprietà di **NON mantenere un riferimento** vivo all'oggetto usato come chiave, e quindi NON ci sono problemi di Garbage collection/Memory leak [<code>samples/js/es6_weakmap.js</code>](samples/js/es6_weakmap.js)
 
 ```javascript
 (function(global) {

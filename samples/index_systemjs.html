@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html lang="it">
+<head>
+	<meta charset="utf-8">
+
+	<title>SAMPLE TS + SystemJS</title>
+
+	<meta name="author" content="Daniele Morosinotto">
+	<script src="node_modules/systemjs/dist/system.js"></script>
+	<script src="bundle_system.js"></script>
+</head>
+<body>
+	<h2>SAMPLE <a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html">TS</a> + SystemJS</h2>
+	<script>
+		SystemJS.import("app");
+	</script>
+	Compilato con:
+	<pre>
+		tsc js/app.ts --module system --target es5 --allowJs --outFile bundle_system.js
+	</pre>
+	Equivale a: <b>tsc -p .</b>
+<pre>
+// tsconfig.json
+{
+    "compilerOptions": {
+		"all"
+        "module": "system",
+        "target": "es5",
+        "noImplicitAny": false,
+        "sourceMap": false,
+        "lib": [ "dom", "es2015" ],
+		"outFile": "bundle_system.js",
+		"allowJs": true
+    },
+	"files": [
+		"js/app.ts"   
+    ]
+}
+</pre>
+</body>
+</html>

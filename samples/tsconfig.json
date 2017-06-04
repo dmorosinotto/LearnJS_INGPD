@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "system",
+        "target": "es5",
+        "noImplicitAny": false,
+        "sourceMap": false,
+        "lib": [ "dom", "es2015" ],
+        "allowJs": true,
+        "outFile": "bundle_system.js"
+    },
+    "files": [
+        "js/app.ts"
+    ]
+}

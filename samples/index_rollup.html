@@ -1,0 +1,28 @@
+﻿<!doctype html>
+<html lang="it">
+<head>
+	<meta charset="utf-8">
+
+	<title>SAMPLE ES6 + Rollup</title>
+
+	<meta name="author" content="Daniele Morosinotto">
+
+	<script src="bundle_rollup.js"></script>
+</head>
+<body>
+	<h2>SAMPLE ES6 + <a href="https://rollupjs.org/#using-rollup-with-babel">Rollup</a></h2>
+	Compilato con:
+	<pre>
+		rollup js/app3.js --format iife --output bundle_rollup.js
+	</pre>
+	Equivale a: <b>rollup -c</b>
+<pre>
+// rollup.config.js
+export default {
+	entry: 'js/app3.js',
+	format: 'iife',
+	dest: 'bundle_rollup.js'
+};
+</pre>
+</body>
+</html>
