@@ -1634,4 +1634,11 @@ console.log(
 
 ---
 
-# TODO: 8 Domande!
+### DOMANDE SU JAVASCRIPT:
+
+1. Usando **if (cond) { var x=... }** per dichiarare una variabile all'interno del ramo **then** di una **if**, che tipo di "scope"/visibilità ha questa variabile?
+2. Il numero **N** dei parametri e il numero **M** degli argomenti di una funzione sono sempre uguali?
+3. Un **Array** viene passato per valore o per referenza ad una funzione quando viene usato come parametro d'ingresso?
+4. All'interno di una funzione il **this** è sempre il riferimento all'oggetto che contiene la funzione o può cambiare in base a qualcosa?
+5. Qual'è il "meccanismo" che sta alla base dell'ereditarietà?
+6. In ES6/ES2015 esistono dei costrutti per dichiarare le variabili con **"block-scope"**?
