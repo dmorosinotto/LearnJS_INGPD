@@ -16,9 +16,9 @@
 
 var c = new MyClass("hello",123);
 var d = new MyClass("world",456);
-console.log(c.pub);
-console.log(JSON.stringify(c));
-console.dir(c);
-for (let k in c) { console.log(k , "=" , c[k]); }
-c.doStuff();
-d.doStuff();
+console.log(c.pub);             //123
+console.log(JSON.stringify(c)); //{"pub": 123}
+console.dir(d);                 //{ pub: 456 }
+for (let k in c) { console.log(k , "=" , c[k]); } //pub=123 , doStuff=function...
+c.doStuff();  //only here can access hello ...
+d.doStuff();  //only here can access world ...

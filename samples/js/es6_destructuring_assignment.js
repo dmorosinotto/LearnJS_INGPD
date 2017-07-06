@@ -13,14 +13,14 @@ var options = {
     };
 // complex matching with rename // FIELD: VAR
 let { repeat, save: foo, colors: [ firstColor, secondColor ]} = options;
-console.log(repeat, foo, firstColor, secondColor);
+console.log(repeat, foo, firstColor, secondColor);      //true, false, red, green
 
 // simple swap variable
 [b,a] = [a,b];
 console.log(a,b); 	//3 1
 
 // extract value from method return (regex.match)
-let [all, year, month, day] =
+let [all, year, month, day] =   // m =
         /^(\d{4})-(\d\d)-(\d\d)$/
         .exec('2999-12-31');
-console.log(day,month);
+console.log(day,month);         //MOLTO PIU' CHIARO DI console.log(m[3],m[2]);

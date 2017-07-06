@@ -1169,7 +1169,7 @@ function classe(strTokens, ...vals) {
 
 <small>[<code>samples/js/es6_destructuring_assignment.js</code>](samples/js/es6_destructuring_assignment.js)</small>
 ```javascript
-// list matching 	//POSIZIONALE ORDINE IMPORTANTE!
+// array matching 	//POSIZIONALE ORDINE IMPORTANTE!
 var [a,,b] = [1,2,3];
 console.log(a,b); 	//1 3
 
@@ -1184,17 +1184,17 @@ var options = {
     };
 // complex matching with raname // FIELD: VAR
 let { repeat, save: foo, colors: [ firstColor, secondColor ]} = options;
-console.log(repeat, foo, firstColor, secondColor);
+console.log(repeat, foo, firstColor, secondColor);  //true, false, red, green
 
 // simple swap variable
 [b,a] = [a,b];
 console.log(a,b); 	//3 1
 
 // extract value from method return (regex.match)
-let [all, year, month, day] =
+let [all, year, month, day] = m =
         /^(\d{4})-(\d\d)-(\d\d)$/
         .exec('2999-12-31');
-console.log(day,month);
+console.log(day,month);   //MOLTO PIU' CHIARO DI m[3], m[2]
 ```
 
 --
@@ -1210,7 +1210,7 @@ function f(x=0,y=0) {
 
 //destructuring parameter
 function g({a, b}) {
-  console.log(`a=${a},b=${b}`);
+  console.log(`READ FROM OPTIONS A=${a}, B=${b}`);
 }
 
 //destructuring + default parameter
@@ -1220,23 +1220,23 @@ function d({x, y = 100, color: [r = 1, g = 2, b = 3] = []} = {}){
 
 
 //unit test f
-f(1,2);			//1 2
-f(3);			//3 0
-f();			//0 0
-f(null,4);		//null 4
+f(1,2);     //1 2
+f(3);       //3 0
+f();        //0 0
+f(null,4);  //null 4
 f(undefined,5);	//0 5
 
 //unit test g	
 g({a: 2, b: 1});	//2 1
-g({a:3});			//3 undefined
-g({});				//undefined undefined
-g({b:4});			//undefined 4
+g({a:3});         //3 undefined
+g({});            //undefined undefined
+g({b:4});         //undefined 4
 g({b:6, a:5, c:7}); //5 6
 
 //unit test d
 d({x: 10, y: 20, color: [30,40,50]});	//10 20 #1e2832
-d();									//100 #123
-d({color: [255,,255], z: 80 });			//100 #ff2ff
+d();                                  //100 #123
+d({color: [255,,255], z: 80 });			  //100 #ff2ff
 ```
 
 --
@@ -1249,7 +1249,7 @@ d({color: [255,,255], z: 80 });			//100 #ff2ff
 function sum(first = 0,...nums) {
   	//nums E' SEMPRE UN ARRAY (eventualmente vuoto [])
     //MAI PIU' Array.prototype.splice.call(arguments,0)
-  	return nums.reduce( (res, n) => res+n , first );
+  	return nums.reduce( function(acc, n){ return acc+n; } , first );
 }
 
 console.log(sum(1,2,3,4,5));	//15
@@ -1258,7 +1258,7 @@ console.log(sum());				//0
 
 var arr = [5,-1,-4,8,2];
 //spread operator
-console.log(sum(...arr)); 	//FUNCTION CALL
+console.log(sum(...arr)); 	//FUNCTION CALL -> 10
 let [five, ...altri] = arr; //DESTRUCTURING Array
 console.log(five);	  		//5 
 console.log(altri);	  		//-1,-4,8,2
@@ -1330,7 +1330,7 @@ class Rectangle extends Polygon { //class inheritance with extends
 		this.kind = 'Rectangle';
 	}
 
-	get area() { //calculated attribute getter
+	get area() { //GETTER calculated property read
 		return this.height * this.width;
 	}
 }
@@ -1342,7 +1342,7 @@ class Square extends Polygon { //class inheritance with extends
 		this.kind = 'Square';
 	}
 
-	set area(value) { //attribute setter
+	set area(value) { //SETTER property set logic
 		this.height = this.width = Math.sqrt(value);
 	}
 
@@ -1353,14 +1353,14 @@ class Square extends Polygon { //class inheritance with extends
 }
 
 let r = new Rectangle(3,2);
-r.print();
-console.log(r.height, "x" ,r.width);
-console.log("Area=",r.area);
+r.print();                            //Hi I'm a Rectangle
+console.log(r.height, "x" ,r.width);  //3x2
+console.log("Area=",r.area);          //Area=6
 
-let s = new Square(5);
-s.print();
-s.area = 9;
-s.print();
+let s = new Square(5);                
+s.print();                            //Hi I'm a Square with side 5
+s.area = 9;                           // -> width=height = 3
+s.print();                            //Hi I'm a Square with side 3
 ```
 
 --
@@ -1374,7 +1374,7 @@ s.print();
 ## Module System
 
 - Standardizzazione della sintassi per gestire il codice JS in più file - ndr: **moduli** e le relative dipendenze (import, export).
-- Permette di uniformare i pattern attualmente in uso (AMD, CommonJS) tramite implementazioni del Loader - ndr: **System** che ha comportamento di default: caricamento **asincrono**!
+- Permette di uniformare i pattern attualmente in uso (AMD, CommonJS) tramite implementazioni del Loader - ndr: **System.import** che ha comportamento di default: caricamento **asincrono**!
 
 --
 
@@ -1393,10 +1393,9 @@ export var sqrt = Math.sqrt;
 ```
 <small>
 - [<code>samples/js/mylib/math.js</code>](samples/js/mylib/math.js)
-- [<code>samples/js/mylib/mathplus.js</code>](samples/js/mylib/math.js)
-- [<code>samples/js/mylib/mathplusplus.js</code>](samples/js/mylib/math.js)
+- [<code>samples/js/mylib/mathplus.js</code>](samples/js/mylib/mathplus.js)
+- [<code>samples/js/mylib/mathplusplus.js</code>](samples/js/mylib/mathplusplus.js)
 - [<code>samples/js/app1.js</code>](samples/js/app1.js)
-- [<code>samples/js/app1.js</code>](samples/js/app.ts)
 - [<code>samples/js/app2.js</code>](samples/js/app2.js)
 - [<code>samples/js/app3.js</code>](samples/js/app3.js)
 - [<code>samples/js/app.ts</code>](samples/js/app.ts)
@@ -1498,8 +1497,8 @@ const rnd = (max) => //CHIAMATA API PER AVERE NUMERO RANDOM
     httpGET('http://numbersapi.com/random?max='+max)
         .then(ret => { 
             var r = parseInt(ret);
-            console.info("<"+max, "->", ret);
-            if (r) return r;
+            console.log("<=",max,"->", ret);
+            if (r === r) return r; //controlla NaN
             else throw new Error("NOT A VALID NUMBER!");
         })//.catch(_ => 42);
 
@@ -1566,14 +1565,14 @@ function httpGET(url) { //FUNZIONE HELPER CHE FA CHIAMATA HTTP
 [<code>samples/js/es6_set_map.js</code>](samples/js/es6_set_map.js)
 
 ```javascript
-let obj = {};
+let objKey = {an: "object", key: ()=>null };
 let dict = new Map();
     
-dict.set(obj, 123);
-dict.get(obj)		//123
-dict.has(obj)		//true
-dict.delete(obj);	//true
-dict.has(obj);		//false
+dict.set(objKey, 123);
+dict.get(objKey)		//123
+dict.has(objKey)		//true
+dict.delete(objKey);	//true
+dict.has(objKey);		//false
 
 let arr = [5, 1, 5, 7, 7, 5];
 let unique = [...new Set(arr)]; // [ 5, 1, 7 ]
@@ -1602,12 +1601,12 @@ let unique = [...new Set(arr)]; // [ 5, 1, 7 ]
 
 var c = new MyClass("hello",123);
 var d = new MyClass("world",456);
-console.log(c.pub);
-console.log(JSON.stringify(c));
-console.dir(c);
-for (let k in c) { console.log(k , "=" , c[k]); }
-c.doStuff();
-d.doStuff();
+console.log(c.pub);             //123
+console.log(JSON.stringify(c)); //{"pub": 123}
+console.dir(d);                 //{ pub: 456 }
+for (let k in c) { console.log(k , "=" , c[k]); } //pub=123 , doStuff=function...
+c.doStuff();  //only here can access hello ...
+d.doStuff();  //only here can access world ...
 ```
 
 --
@@ -1634,6 +1633,32 @@ console.log(
 
 ---
 
+## SUGGERIMENTI LIBS & TOOLS
+
+- [Moment.js](http://momentjs.com/) o [date-fns.js](https://date-fns.org) libreria per manipolazione Date
+- [Underscore](http://underscorejs.org/) o [Lo-dash](http://lodash.com/) funzioni di utilità su Array/Object
+- [JQuery](http://api.jquery.com/) accesso/modifica DOM cross-browser
+- [AngularJS](https://angularjs.org) framework MVVM per SPA + Video: [Intro 60min](http://www.youtube.com/watch?v=i9MHigUZKEM)
+
+- [Typescript](http://www.typescriptlang.org) Linguaggio programmazione: **superset tipizzato di Javascript ES6/ESNext** che compila in JS
+- [VS Code](https://code.visualstudio.com) Editor cross-platform Free e con serie di [estensioni plug-in](https://marketplace.visualstudio.com/VSCode) molto utili per lavorare con JS / TS e altri linguaggi.
+- Video corso su come fare [Debug JS](https://egghead.io/courses/chrome-devtools-sources-panel) con Chrome DevTools
+
+--
+
+## RIFERIMENTI
+
+- [Object Playground](http://www.objectplayground.com/) sito eccezionale per capire il Prototype e come fare OOP in Javascript
+- D.Crockford autore Javascript GOOD PARTS [Video1](http://www.youtube.com/watch?v=RO1Wnu-xKoY) [Video2](http://www.youtube.com/watch?v=ya4UHuXNygM)
+- Serie Ebook online ["You Don't Know Javascript"](https://github.com/getify/You-Dont-Know-JS) by @getify
+- Raccolta di [Javascript Patterns](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#mixinpatternjavascript) + implementazione comuni [Data Structure](https://github.com/thejameskyle/itsy-bitsy-data-structures/blob/master/itsy-bitsy-data-structures.js)  in Javascript
+- [Articolo](https://github.com/lukehoban/es6features) riassuntivo delle feature introdotte in ES6
+- [Serie](http://www.2ality.com/2014/08/es6-today.html) approfondimenti su ES6 by @rauschma
+- Video sul futuro [ES6/7](https://youtu.be/DqMFX91ToLw) 	e  [Async/Await](https://youtu.be/hbuLw4sauCw) by @jhusain
+- Dettaglio nuove features [ES2016/ES2017](http://exploringjs.com/es2016-es2017/)
+
+--
+
 ### DOMANDE SU JAVASCRIPT:
 
 1. Usando **if (cond) { var x=... }** per dichiarare una variabile all'interno del ramo **then** di una **if**, che tipo di "scope"/visibilità ha questa variabile?
@@ -1642,3 +1667,13 @@ console.log(
 4. All'interno di una funzione il **this** è sempre il riferimento all'oggetto che contiene la funzione o può cambiare in base a qualcosa?
 5. Qual'è il "meccanismo" che sta alla base dell'ereditarietà?
 6. In ES6/ES2015 esistono dei costrutti per dichiarare le variabili con **"block-scope"**?
+
+---
+
+## CONTATTI
+
+![Me](images/WHO.png)
+
+- Twitter: [@dmorosinotto](https://twitter.com/dmorosinotto)
+- E-Mail: [d.morosinotto@icloud.com](mailto:d.morosinotto@icloud.com)
+- Slides: [https://github.com/dmorosinotto/LearnJS_INGPD](https://github.com/dmorosinotto/LearnJS_INGPD)

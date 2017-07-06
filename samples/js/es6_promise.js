@@ -2,8 +2,8 @@ const rnd = (max) => //CHIAMATA API PER AVERE NUMERO RANDOM
     httpGET('http://numbersapi.com/random?max='+max)
         .then(ret => { 
             var r = parseInt(ret);
-            console.info("<"+max, "->", ret);
-            if (r) return r;
+            console.info("<="+max, "->", ret);
+            if ( r === r ) return r; //controllo NaN
             else throw new Error("NOT A VALID NUMBER!");
         })//.catch(_ => 42);
 
