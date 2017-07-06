@@ -1,0 +1,19 @@
+interface INamed {
+    name: string;
+}
+
+function sortByName<T extends INamed>(a: T[]) {
+    var result = a.slice(0);
+    result.sort(function(x,y){
+        return x.name.localeCompare(y.name);
+    });
+    return result;
+}
+
+var data = [
+    {name: "Pluto",     age: 75},
+    {name: "Daniele",   age: 42},
+    {name: "Pippo",     age: 20}
+]
+var res = sortByName(data);
+console.log("1st:", res[0].name , res[0].age);
