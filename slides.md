@@ -1143,7 +1143,7 @@ let person = {name: 'Daniele'};
 const year = 1975;
 var str = `${person.name} e' nato nel ${year} 
 			e ha ${new Date().getFullYear()-year} anni!`
-console.log(str);   //Danile e' nato nel 1975 e ha 42 anni!
+console.log(str);   //Daniele e' nato nel 1975 e ha 42 anni!
 
 
 // TAGGED template string function
@@ -1419,7 +1419,7 @@ alert("2π = " + math.sum(math.pi, math.pi));    //6.283186
 ### import explicit + rename
 ```javascript
 // app2.js
-import { pi, sqrt as radice } from "./mylib/math";
+import { pi, sqrt as radice } from "./mylib/math.js";
 //IMPORT EXPLICIT + EVENTUALE RENAME
 alert("V²π = " + radice(pi));                    //1.7724539
 ```
@@ -1439,8 +1439,8 @@ export default function(x) {
 ### export * + import default</small>
 ```javascript
 // mylib/mathplusplus.js
-import _exp from "lib/mathplus";
-export * from "lib/math";
+import _exp from "./mathplus.js";
+export * from "./math.js";
 export const e = _exp(1);
 export var exp = _exp;
 ```
@@ -1448,7 +1448,7 @@ export var exp = _exp;
 ### import dependency tree
 ```javascript
 // app3.js
-import {exp, pi} from "./mylib/mathplusplus";
+import {exp, pi} from "./mylib/mathplusplus.js";
 //IMPORT PUNTUALE DI ALCUNE FUNZIONI + ATTRAVERSA DEPENENCY TREE (pi->mathplusplus->math)
 alert("e^π = " + exp(pi));                     //23.1407006
 ```
